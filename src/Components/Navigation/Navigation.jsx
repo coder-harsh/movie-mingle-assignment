@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import logo from "../../assets/Logo/logo.webp";
+import logo from "../../assets/Logo/logo.jpg";
 import MobMenu from "./MobileMenu";
 
 
@@ -8,7 +8,7 @@ const Navigation = () => {
         <nav className="flex flex-row justify-between px-8 py-6 items-center border-b-[1px]">
             <div>
                 <Link to="/">
-                    <img src={logo} alt="" className="w-32" />
+                    <img src={logo} alt="Movie Mingle" className="w-40" />
                 </Link>
             </div>
             <div className="hidden md:flex">
