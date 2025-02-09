@@ -6,9 +6,10 @@ export const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
     const [movies, setMovies] = useState([]);
-    const [showResults, setShowResults] = useState(false);
+    const [moviesDetails, setMoviesDetails] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+    const BACKENDUrl = import.meta.env.VITE_BACKENDUrl;
     const fetchMovies = async (query) => {
         if (!query.trim()) return;
         const handleMoviesUpdate = (movies) => {
@@ -20,11 +21,10 @@ export const MoviesProvider = ({ children }) => {
         };
         setIsLoading(true); // Start loading
         try {
-            const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
-
+            const response = await axios.get(`${BACKENDUrl}/?s=${query}/&apikey=${API_KEY}`);
+            console.log(BACKENDUrl)
             if (response.data.Response === "True") {
                 setMovies(response.data.Search);
-                setShowResults(true);
                 console.log(response.data.Search)
                 handleMoviesUpdate(response.data.Search);
                 toast.success(`${response.data.Search.length}` + " movies found..", {
@@ -36,7 +36,6 @@ export const MoviesProvider = ({ children }) => {
                 })
                 console.log(response.data.Error)
                 setMovies([]);
-                setShowResults(false);
             }
         } catch (error) {
             console.error("Error fetching movies:", error);
@@ -48,9 +47,19 @@ export const MoviesProvider = ({ children }) => {
             setIsLoading(false); // Stop loading
         }
     };
-
+    const fetchMovieDetails = async (imdbID) => {
+        try {
+            const response = await axios.get(`${BACKENDUrl}/?i=${imdbID}&apikey=${API_KEY}`)
+            if (response.status == 200) {
+                setMoviesDetails(response.data)
+                console.log(response.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
-        <MoviesContext.Provider value={{ fetchMovies, movies, showResults, isLoading }}>
+        <MoviesContext.Provider value={{ fetchMovies, movies, isLoading, fetchMovieDetails, moviesDetails }}>
             {children}
         </MoviesContext.Provider>
     );

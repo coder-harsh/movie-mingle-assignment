@@ -8,10 +8,15 @@ import { useContext } from 'react'
 import { MoviesContext } from './Context/MoviesContext'
 import MoviesSection from './Components/Movies/MoviesSection'
 import { Element } from "react-scroll"; // Import react-scroll
+import MovieDetails from './Components/Pages/MovieDetails'
+import ScrollTop from './Components/ScrollTop'
+import ErrorBoundary from './Components/ErrorBoundary'
+import Error from './Components/Error'
 function App() {
   const { movies } = useContext(MoviesContext);
   return (
     <>
+      <ScrollTop />
       <Navigation />
       <Routes>
         <Route path="/" element={
@@ -20,14 +25,18 @@ function App() {
             {
               movies.length > 0 &&
               (
-                <Element name="movies-section">
-                  <MoviesSection />
-                </Element>
+                <ErrorBoundary>
+                  <Element name="movies-section">
+                    <MoviesSection />
+                  </Element>
+                </ErrorBoundary>
+
               )
             }
           </>
         } />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/movie-details/:slug/:id" element={<MovieDetails />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
       <Toaster />
       <ToastNotifications />

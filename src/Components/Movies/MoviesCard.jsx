@@ -6,7 +6,7 @@ const MoviesCard = ({ movie }) => {
     return (
         <div className='flex flex-col relative'>
             <Chip value={Type} color='red' className='absolute right-[0.4rem] top-[0.4rem]' />
-            <img src={Poster} alt={Title} className='rounded-t-md w-[17rem] h-[14rem]' />
+            <img src={Poster ? Poster:"https://placehold.co/600x400"} alt={Title} className='rounded-t-md w-[17rem] h-[14rem]' />
             <div className='flex justify-between px-4 py-6'>
                 <h3 className='text-xl font-bold text-left text-wrap'>{Title}</h3>
                 <span className='flex justify-center items-center'>

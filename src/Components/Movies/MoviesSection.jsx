@@ -10,7 +10,7 @@ const MoviesSection = () => {
             <div className='flex justify-center items-center flex-wrap'>
                 {
                     movies.map((movie) => (
-                        <Link key={movie.imdbID} to={`/movie-details/${movie.imdbID}`} className='m-6 rounded-md bg-white w-[17rem] hover:shadow hover:bg-gray-50'>
+                        <Link key={movie.imdbID} to={`/movie-details/${movie.Title.toLowerCase().replace(/\s+/g, "-")}/${movie?.imdbID}`} className='m-6 rounded-md bg-white w-[17rem] hover:shadow hover:bg-gray-50'>
                             <MoviesCard movie={movie} />
                         </Link>
                     ))
