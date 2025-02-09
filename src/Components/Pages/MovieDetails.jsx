@@ -45,7 +45,7 @@ const MovieDetails = () => {
     } = moviesDetails || {};
 
     return (
-        <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="max-w-8xl mx-auto px-2 sm:px-2 lg:px-8 py-12">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div className="px-8">
                     <Button leftIcon={<IoMdArrowBack />} colorScheme='gray' variant='solid' onClick={() => navigate(-1)}>
@@ -93,7 +93,7 @@ const MovieDetails = () => {
                         <div className="grid grid-cols-2 gap-6 mb-8">
                             <div>
                                 <h3 className="text-sm font-semibold text-gray-500 mb-1">Genre</h3>
-                                <div className="flex gap-2">
+                                <div className="flex gap-2 flex-col md:flex-row">
                                     {Genre ? (
                                         Genre.split(", ").map((genre, index) => (
                                             <span

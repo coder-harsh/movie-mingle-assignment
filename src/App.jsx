@@ -12,6 +12,7 @@ import MovieDetails from './Components/Pages/MovieDetails'
 import ScrollTop from './Components/ScrollTop'
 import ErrorBoundary from './Components/ErrorBoundary'
 import Error from './Components/Error'
+import About from './Components/Pages/About'
 function App() {
   const { movies } = useContext(MoviesContext);
   return (
@@ -36,6 +37,7 @@ function App() {
           </>
         } />
         <Route path="/movie-details/:slug/:id" element={<MovieDetails />} />
+        <Route path="/about" element={<About />} />
         <Route path="/*" element={<Error />} />
       </Routes>
       <Toaster />

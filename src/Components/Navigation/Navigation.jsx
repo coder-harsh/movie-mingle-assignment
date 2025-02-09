@@ -14,10 +14,8 @@ const Navigation = () => {
             <div className="hidden md:flex">
                 <ul className="flex flex-row font-semibold">
                     <li> <NavLink to={"/"} className="text-navcol mx-5 hover:text-red-400">Home</NavLink></li>
-                    <li> <NavLink to="/movies" className="text-navcol mx-5 hover:text-red-400">Movies</NavLink></li>
-                    <li> <NavLink to={"https://blog.indiandevelopers.org"} target="_blank" className="text-navcol mx-5 hover:text-blue-400">Blog</NavLink></li>
                     <li> <NavLink to={"/about"} className="text-navcol mx-5 hover:text-red-400">About</NavLink></li>
-                    <li> <NavLink to={"/contact"} className="text-navcol mx-5 hover:text-red-400">Contact</NavLink></li>
+                    <li> <NavLink to={"https://github.com/coder-harsh/movie-mingle-assignment/issues"} target="_blank" className="text-navcol mx-5 hover:text-red-400">Raise Issue?</NavLink></li>
                 </ul>
             </div>
             <div className="hidden md:flex">
