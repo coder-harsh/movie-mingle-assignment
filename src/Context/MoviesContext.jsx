@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { scroller } from "react-scroll";
 export const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
@@ -10,7 +11,13 @@ export const MoviesProvider = ({ children }) => {
     const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
     const fetchMovies = async (query) => {
         if (!query.trim()) return;
-
+        const handleMoviesUpdate = (movies) => {
+            if (movies && movies.length > 0) {
+                setTimeout(() => {
+                    scroller.scrollTo("movies-section", { smooth: true, duration: 800 });
+                }, 100);
+            }
+        };
         setIsLoading(true); // Start loading
         try {
             const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
@@ -19,6 +26,7 @@ export const MoviesProvider = ({ children }) => {
                 setMovies(response.data.Search);
                 setShowResults(true);
                 console.log(response.data.Search)
+                handleMoviesUpdate(response.data.Search);
                 toast.success(`${response.data.Search.length}` + " movies found..", {
                     position: "top-right",
                 })

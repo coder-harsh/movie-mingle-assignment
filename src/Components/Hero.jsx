@@ -2,7 +2,7 @@ import React from 'react'
 import InputSearch from './InputSearch'
 const Hero = () => {
     return (
-        <div className='hero flex justify-center relative'>
+        <div className='hero flex justify-center items-center relative'>
             <InputSearch />
         </div>
     )

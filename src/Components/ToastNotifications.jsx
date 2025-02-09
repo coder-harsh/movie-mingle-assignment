@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 const ToastNotifications = () => {
     const messages = [
-        "Welcome to the Movie Finder!",
+        "Welcome to the Movie Mingle!",
         "❤️ Are you Google? Because you have everything I search!",
         "🫶 Are you WiFi? Because I’m totally connected to you!",
         "Enter a movie name and click search.",

@@ -5,10 +5,10 @@ import MobMenu from "./MobileMenu";
 
 const Navigation = () => {
     return (
-        <nav className="flex flex-row justify-between px-8 py-6 items-center border-b-[1px]">
+        <nav className="flex flex-row justify-between px-8 py-4 items-center border-b-[1px] navbar">
             <div>
                 <Link to="/">
-                    <img src={logo} alt="Movie Mingle" className="w-40" />
+                    <img src={logo} alt="Movie Mingle" className="w-40 h-14" />
                 </Link>
             </div>
             <div className="hidden md:flex">
