@@ -1,8 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/Logo/logo.jpg";
 import MobMenu from "./MobileMenu";
-
-
+import { Button, ButtonGroup, IconButton } from "@chakra-ui/react";
+import { FaGithub } from "react-icons/fa6";
 const Navigation = () => {
     return (
         <nav className="flex flex-row justify-between px-8 py-4 items-center border-b-[1px] navbar">
@@ -19,10 +19,11 @@ const Navigation = () => {
                 </ul>
             </div>
             <div className="hidden md:flex">
-                <Link to={"tel:7667430491"}>
-                    <button className="bg-red-400 px-4 py-2 rounded text-white flex justify-center items-center hover:opacity-85 font-semibold">
-                        Explore
-                    </button>
+                <Link to={"https://github.com/coder-harsh/movie-mingle-assignment"} target="blank">
+                    <ButtonGroup size='md' isAttached variant='solid' colorScheme="gray">
+                        <Button>Source</Button>
+                        <IconButton aria-label='source code' icon={<FaGithub />} variant="outline" />
+                    </ButtonGroup>
                 </Link>
             </div>
             <MobMenu />
